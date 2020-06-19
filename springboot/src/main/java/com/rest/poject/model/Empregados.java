@@ -1,5 +1,7 @@
 package com.rest.poject.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,63 +14,113 @@ import javax.persistence.Table;
 public class Empregados {
 	
 	private long id;
-	private String primeiroNome;
-	private String segundoNome;
-	private String emailId;
+	private String nomeCompleto;
+	private String endereco;
+	private String email;
+	private String telefone;
+	private String CPF;
+	private Date dateNascimento;
+	private int funcao;
+	private double salario;
 	
 	public Empregados() {
 		super();
 	}
 
-	public Empregados(long id, String primeiroNome, String segundoNome, String emailId) {
+	public Empregados(long id, String nomeCompleto, String endereco, String email, String telefone, String cPF,
+			Date dateNascimento, int funcao, double salario) {
 		super();
 		this.id = id;
-		this.primeiroNome = primeiroNome;
-		this.segundoNome = segundoNome;
-		this.emailId = emailId;
+		this.nomeCompleto = nomeCompleto;
+		this.endereco = endereco;
+		this.email = email;
+		this.telefone = telefone;
+		this.CPF = cPF;
+		this.dateNascimento = dateNascimento;
+		this.funcao = funcao;
+		this.salario = salario;
 	}
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
-	
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	@Column(name = "primeiro_nome", nullable = false)
-	public String getPrimeiroNome() {
-		return primeiroNome;
-	}
 
-	public void setPrimeiroNome(String primeiroNome) {
-		this.primeiroNome = primeiroNome;
+	@Column(name = "nome_completo", nullable = false)
+	public String getNomeCompleto() {
+		return nomeCompleto;
 	}
 	
-	@Column(name = "segundo_nome", nullable = false)
-	public String getSegundoNome() {
-		return segundoNome;
-	}
-
-	public void setSegundoNome(String segundoNome) {
-		this.segundoNome = segundoNome;
+	
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
 	}
 	
-	@Column(name = "email", nullable = false)
-	public String getEmailId() {
-		return emailId;
+	@Column(name = "Endereco", nullable = false)
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	
+	@Column(name = "Email", nullable = false)
+	public String getEmail() {
+		return email;
 	}
 
-	@Override
-	public String toString() {
-		return "Empregados [id=" + id + ", primeiroNome=" + primeiroNome + ", segundoNome=" + segundoNome + ", emailId="
-				+ emailId + "]";
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	@Column(name = "Telefone", nullable = false)
+	public String getTelefone() {
+		return telefone;
 	}
 
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	
+	@Column(name = "CPF", nullable = false)
+	public String getCPF() {
+		return CPF;
+	}
+
+	public void setCPF(String cPF) {
+		CPF = cPF;
+	}
+	
+	@Column(name = "data_nascimento", nullable = false)
+	public Date getDateNascimento() {
+		return dateNascimento;
+	}
+
+	public void setDateNascimento(Date dateNascimento) {
+		this.dateNascimento = dateNascimento;
+	}
+	
+	@Column(name = "funcao", nullable = false)
+	public int getFuncao() {
+		return funcao;
+	}
+
+	public void setFuncao(int funcao) {
+		this.funcao = funcao;
+	}
+	
+	@Column(name = "salario", nullable = false)
+	public double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
 }

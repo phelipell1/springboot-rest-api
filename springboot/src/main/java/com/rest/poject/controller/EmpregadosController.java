@@ -53,9 +53,16 @@ public class EmpregadosController {
 		Empregados empregados = empregadosrepository.findById(empregadosId)
 				.orElseThrow(() -> new ResourceNotFoundException("Empregados não existe :: "+empregadosId));
 		
-		empregados.setEmailId(empregadosDetalhes.getEmailId());
-		empregados.setPrimeiroNome(empregadosDetalhes.getPrimeiroNome());
-		empregados.setSegundoNome(empregadosDetalhes.getSegundoNome());
+		
+		
+		empregados.setNomeCompleto(empregadosDetalhes.getNomeCompleto());
+		empregados.setEndereco(empregadosDetalhes.getEndereco());
+		empregados.setEmail(empregadosDetalhes.getEmail());
+		empregados.setTelefone(empregados.getEmail());
+		empregados.setCPF(empregadosDetalhes.getCPF());
+		empregados.setDateNascimento(empregadosDetalhes.getDateNascimento());
+		empregados.setFuncao(empregadosDetalhes.getFuncao());
+		empregados.setSalario(empregadosDetalhes.getSalario());
 		final Empregados upaEmpregados = empregadosrepository.save(empregados);
 		return ResponseEntity.ok(upaEmpregados);
 	}

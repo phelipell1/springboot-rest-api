@@ -2,12 +2,22 @@ package com.rest.poject.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
+
+import com.rest.poject.enums.Funcao;
 
 @Entity
 @Table(name = "Empregados")
@@ -20,15 +30,15 @@ public class Empregados {
 	private String telefone;
 	private String CPF;
 	private Date dateNascimento;
-	private int funcao;
+	private Funcao funcao;
 	private double salario;
 	
 	public Empregados() {
 		super();
 	}
-
+	
 	public Empregados(long id, String nomeCompleto, String endereco, String email, String telefone, String cPF,
-			Date dateNascimento, int funcao, double salario) {
+			Date dateNascimento, Funcao funcao, double salario) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
@@ -40,7 +50,7 @@ public class Empregados {
 		this.funcao = funcao;
 		this.salario = salario;
 	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
@@ -51,6 +61,7 @@ public class Empregados {
 		this.id = id;
 	}
 
+	
 	@Column(name = "nome_completo", nullable = false)
 	public String getNomeCompleto() {
 		return nomeCompleto;
@@ -107,11 +118,11 @@ public class Empregados {
 	}
 	
 	@Column(name = "funcao", nullable = false)
-	public int getFuncao() {
+	public Funcao getFuncao() {
 		return funcao;
 	}
 
-	public void setFuncao(int funcao) {
+	public void setFuncao(Funcao funcao) {
 		this.funcao = funcao;
 	}
 	
@@ -123,4 +134,5 @@ public class Empregados {
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
+	
 }
